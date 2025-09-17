@@ -1,0 +1,123 @@
+{% load static %}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(./{% static 'img/bg-image.jpg.url' %});
+    background-size: cover;
+}
+
+.container {
+    width: 100%;
+    padding: 0 50px;
+    margin: 0 auto;
+    /* position: relative; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login {
+    width: 350px;
+    background-color: #ffffff;
+    background-image: linear-gradient(315deg, #ffffff 0%, #91a6ff 74%);
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 5px 5px 25px;
+}
+
+.login-brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-brand img {
+    width: 150px;
+    cursor: pointer;
+}
+
+.login-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-form input {
+    padding: 5px;
+    width: 100%;
+    margin: 10px 0;
+    background: none;
+    outline: none;
+    border: 2px solid rgba(64, 122, 230, 0.5);
+    color: rgba(64, 122, 230, 1);
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.login-form input::placeholder {
+    color: rgba(64, 122, 230, 1);
+}
+
+.login-form input:focus {
+    background: #fff;
+}
+
+.login-form__btn {
+    width: 100%;
+}
+
+.login-form__btn .btn {
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    background: none;
+    outline: none;
+    border: 2px solid rgba(64, 122, 230, 0.5);
+    color: rgba(64, 122, 230, 1);
+    transition: 0.3s;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.login-form__btn .btn:hover {
+    background: rgba(64, 122, 230, 0.2);
+}
+
+.login-form__btn .btn:focus {
+    background: rgba(64, 122, 230, 1);
+    color: #fff;
+}
+
+.login-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-link a {
+    text-decoration: none;
+    margin: 10px 0;
+    color: rgba(64, 122, 230, 1);
+}
+
+.login-link span {
+    height: 2px;
+    background-color: rgba(64, 122, 230, 1);
+    width: 0;
+    transition: 0.3s;
+}
+
+.login-link a:hover~.line {
+    width: 100%;
+}

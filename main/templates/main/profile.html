@@ -1,0 +1,42 @@
+{% extends 'wrapper.html' %}
+{% block title %} Profile {% endblock %}
+{% block content %}
+ {% if messages %}
+                <div class="success_messages" align="center">
+                    <ul class="success_messages">
+                   		 {% for message in messages %}
+							<li class="{{message.tags}}">
+                           		 {{message|safe}}
+<!--                           		 <a href="#" class="close" >X</a>-->
+							</li>
+						{% endfor %}
+                    </ul>
+                </div>
+{% endif %}
+   <div align="right">
+	      <a href="{% url 'home' %}" >
+            	<button class="btn btn-success">Главная страница</button>
+          </a>
+   </div>
+ <div align="center">
+    <form method="POST">
+      {% csrf_token %}
+<!--      <div align="left">-->
+<!--        <p> First name: {{ user_form.first_name }}</p> <p> Last name: {{user_form.last_name}}</p>-->
+<!--        <p> Email: {{user_form.email}}</p>-->
+<!--      </div>-->
+<!--      <div align="right">-->
+<!--        <p>Department: {{ profile_form.department }}</p>-->
+<!--        <p>Position in company: {{profile_form.position}}</p>-->
+<!--        <p> Phone number: {{profile_form.phoneNumber}}</p>-->
+<!--      &lt;!&ndash;  <input value="{{user_id}}" name="user_id">&ndash;&gt;-->
+          {{user_form.as_p}}
+        {% if group1 or group2 or group3 %}
+          {{profile_form.as_p}}
+        {% endif %}
+        <button type="submit">Сохранить изменения</button>
+<!--      </div>-->
+    </form>
+ </div>
+
+{% endblock %}

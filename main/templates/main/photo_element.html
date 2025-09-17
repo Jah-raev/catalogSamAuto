@@ -1,0 +1,16 @@
+{% extends 'wrapper.html' %}
+{% block title %} Photo Element {% endblock%}
+{% block content %}
+
+
+ <div class="main-section__img" align="center">
+            {% if element.img %}
+            <img src="{{element.img.url}}" alt="image" width="50%" height="50%">
+            {% else %}
+                <h1 align="center">Not found any img</h1>
+            {% endif %}
+
+ </div>
+
+
+{% endblock %}

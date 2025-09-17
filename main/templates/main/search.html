@@ -1,0 +1,67 @@
+{% extends 'wrapper.html' %}
+{% block title %} Search {% endblock %}
+{% block content %}
+<a href="{% url 'home' %}" class="breadcrumb_link">Главная </a>
+
+
+<div class="product">
+		<div class="container">
+			<div class="col-md-3 header-right">
+					<div class="search-bar" align="right">
+						<form action="{% url 'search' %}" method="GET">
+							{% csrf_token %}
+
+						<input  name="detail" type="text" value="Поиск" onfocus="this.value = '';"
+							onblur="if (this.value == '') {this.value = 'Search';}">
+						<input type="submit" value="" >
+						</form>
+					</div>
+    		</div>
+    					<div class="clearfix"> </div>
+			<div class="product-top">
+				<div class="product-one">
+					{% if object_list %}
+					{% for detail in object_list %}
+					<div class="col-md-3 product-left">
+						<div class="product-main simpleCart_shelfItem">
+							<a href="{% url 'detailInfo' detail.brand.car.slug detail.brand.slug detail.compartment.id detail.slug %}" class="mask">
+								{% if detail.img %}
+								<img class="img-responsive zoom-img"
+									src="{{ detail.img.url }}" alt="" />
+								{% else %}
+								<H3>Not found any image</H3>
+								{% endif %}
+							</a>
+							<div class="product-bottom">
+								<h3>{{detail.name}}</h3>
+<!--								<p>Explore Now</p>-->
+								<p>Part number: {{detail.identifier}}</p>
+								<h4><a class="item_add" href=""></a> </h4>
+							</div>
+
+						</div>
+					</div>
+					{% endfor %}
+					{% else %}
+						{% if messages %}
+							<div class="success_messages" align="center">
+								<ul class="success_messages">
+									{% for message in messages %}
+									<li class="{{message.tags}}">
+										{{message|safe}}
+										<a href="" class="close" >X</a>
+									</li>
+									{% endfor %}
+								</ul>
+							</div>
+						{% endif %}
+					{% endif %}
+				</div>
+			</div>
+		</div>
+
+ </div>
+
+
+
+{% endblock %}

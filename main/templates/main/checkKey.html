@@ -1,0 +1,41 @@
+{% extends 'wrapper.html' %}
+{% block title %} Forbidden {% endblock %}
+{% block content %}
+ {% if messages %}
+                <div class="error_messages" align="center">
+                    <ul class="error_messages">
+                   		 {% for message in messages %}
+							<li class="{{message.tags}}">
+                           		 {{message|safe}}
+<!--                           		 <a href="#" class="close" >X</a>-->
+							</li>
+						{% endfor %}
+                    </ul>
+                </div>
+{% endif %}
+
+   <div align="right">
+        <a href="{% url 'login' %}" >
+            <button class="btn btn-success">Авторизация</button>
+        </a>
+   </div>
+   <div class="container-fluid">
+        <div class="row auth__row">
+            <div class="col-6 offset-3 d-flex justify-content-center align-items-center">
+
+                <form class="auth__form" action="{% url 'checkKey' %}" method="POST">
+                    {% csrf_token %}
+                    <label for="key">Пароль</label>
+                    <input class="form-control" type="password" name="key" id="key">
+                    <input class="btn btn-success mt-5" type="submit" value="Далее">
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}

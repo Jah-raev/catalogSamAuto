@@ -1,0 +1,43 @@
+{% extends 'wrapper.html' %}
+{% block title %} Registration {% endblock %}
+{% block content %}
+     <div align="right">
+         <a href="{% url 'login' %}" >
+            <button class="btn btn-success">Авторизация</button>
+
+         </a>
+     </div>
+
+
+ <div class="container-fluid">
+        <div class="row auth__row">
+            <div class="col-6 offset-3 d-flex justify-content-center align-items-center">
+                <form class="auth__form" action="" method="POST">
+                    {% csrf_token %}
+                    <label for="username">Логин</label>
+                    <input class="form-control" type="text" name="username" id="username">
+                    <label for="password">Пароль</label>
+                    <input class="form-control" type="password" name="password" id="password">
+                     <label for="password2">Повторно водите пароль!</label>
+                    <input class="form-control" type="password" name="password2" id="password2">
+                    <input class="btn btn-success mt-5" type="submit">
+                </form>
+                {% if messages %}
+                <div class="error_messages">
+                    <ul class="error_messages">
+                    {% for message in messages %}
+                        <li class="{{message.tags}}">
+                            {{message|safe}}
+                            <a href="#" class="close" >X</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

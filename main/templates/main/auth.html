@@ -1,0 +1,82 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block title %} Login {% endblock %}
+{% block content %}
+<link href="{% static 'css/site.css' %}" rel="stylesheet">
+
+
+<!--   <div class="container-fluid">-->
+<!--        <div class="row auth__row">-->
+<!--            <div class="col-6 offset-3 d-flex justify-content-center align-items-center">-->
+<!--                  {% if messages %}-->
+<!--                    <div class="success_messages" align="center">-->
+<!--                        <ul class="success_messages">-->
+<!--                            {% for message in messages %}-->
+<!--                            <li class="{{message.tags}}">-->
+<!--                                {{message|safe}}-->
+<!--                                <a href="#" class="close" >X</a>-->
+<!--                            </li>-->
+<!--                            {% endfor %}-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                  {% endif %}-->
+
+<!--                <form class="auth__form" action="{% url 'login' %}" method="POST">-->
+<!--                    {% csrf_token %}-->
+<!--                    <label for="username">Логин</label>-->
+<!--                    <input class="form-control" type="text" name="username" id="username">-->
+<!--                    <label for="password">Пароль</label>-->
+<!--                    <input class="form-control" type="password" name="password" id="password">-->
+<!--                    <input class="btn btn-success mt-5" type="submit" value="Вход">-->
+
+<!--                </form>-->
+
+<!--                             <a href="{% url 'checkKey' %}"  >-->
+<!--                     <p align="center">Registration</p>-->
+<!--                 </a>-->
+<!--            </div>-->
+
+<!--        </div>-->
+<!--    </div>-->
+
+
+<div class="container">
+        <div class="login">
+            <div class="login-brand">
+                <img src="{% static 'img/logo.png' %}" alt="logo">
+            </div>
+
+             {% if messages %}
+                    <div class="success_messages" align="center">
+                        <ul class="success_messages">
+                            {% for message in messages %}
+                            <li class="{{message.tags}}">
+                                {{message|safe}}
+                                <a href="#" class="close" >X</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                  {% endif %}
+
+            <form class="login-form" action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+                <input type="text" placeholder="Введите ваш логин" name="username">
+                <input type="password" placeholder="Введите ваш пароль" name="password">
+                <div class="login-form__btn">
+                    <button class="btn" type="submit">Вход</button>
+                </div>
+            </form>
+
+            <div class="login-link">
+                <a href="{% url 'checkKey' %}">Регистрация</a>
+                <span class="line"></span>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
