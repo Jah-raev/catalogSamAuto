@@ -3,6 +3,7 @@
     <extensionMap>
       <mapping pattern=".clang-format" type="PLAIN_TEXT" />
       <mapping ext="jq" type="PLAIN_TEXT" />
+      <mapping ext="pcap" type="PLAIN_TEXT" />
     </extensionMap>
   </component>
 </application>
